@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - wall
+  - Zombie
+  - Kol
+  - Ayak
+  - Body
+  - Kafa
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Bullet
+  - Water
+  - UI
+  - zombie
+  - organ
+  - wall
+  - background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 295343667
+    locked: 0
+  - name: Player
+    uniqueID: 2306273197
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 3731492615
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 506559329
+    locked: 0
+  - name: New Layer 5
+    uniqueID: 2053866407
+    locked: 0
+  - name: Bullet
+    uniqueID: 2173887081
+    locked: 0
+  - name: Duvar
+    uniqueID: 1934781693
+    locked: 0
