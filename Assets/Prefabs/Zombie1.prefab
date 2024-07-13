@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7019159684224826071}
   - component: {fileID: 971402348305401185}
-  - component: {fileID: 2989792798653794127}
   - component: {fileID: 7386762316527427276}
   m_Layer: 7
   m_Name: zombieLegRight
@@ -86,19 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2989792798653794127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91335807981258258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 60
 --- !u!50 &7386762316527427276
 Rigidbody2D:
   serializedVersion: 4
@@ -136,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8277181544193215289}
   - component: {fileID: 1975521462375047189}
-  - component: {fileID: 2521849575074543670}
   - component: {fileID: 853825806547270058}
   m_Layer: 7
   m_Name: zombieLeftArm
@@ -212,19 +197,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2521849575074543670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977770551004586484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 100
 --- !u!50 &853825806547270058
 Rigidbody2D:
   serializedVersion: 4
@@ -293,7 +265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 900875044297959367}
   - component: {fileID: 6298752027645932893}
-  - component: {fileID: 6411905856365671520}
   - component: {fileID: 1104343070929405702}
   m_Layer: 7
   m_Name: zombieRightArm
@@ -369,19 +340,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6411905856365671520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4769298675084651419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 100
 --- !u!50 &1104343070929405702
 Rigidbody2D:
   serializedVersion: 4
@@ -420,7 +378,6 @@ GameObject:
   - component: {fileID: 1837978039340650251}
   - component: {fileID: 3324572907356349863}
   - component: {fileID: 8336310186470750872}
-  - component: {fileID: 6815026376956043721}
   - component: {fileID: 3029075929000400033}
   m_Layer: 7
   m_Name: zombieLegLeft
@@ -541,19 +498,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.80838966, y: 0.9489958}
   m_EdgeRadius: 0
---- !u!114 &6815026376956043721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7666810652108108822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 60
 --- !u!50 &3029075929000400033
 Rigidbody2D:
   serializedVersion: 4
@@ -593,8 +537,6 @@ GameObject:
   - component: {fileID: 518497217825643034}
   - component: {fileID: 9159360559492124910}
   - component: {fileID: 1294278620652584418}
-  - component: {fileID: 5424904254383644426}
-  - component: {fileID: 8016670344252702995}
   m_Layer: 6
   m_Name: Zombie1
   m_TagString: Zombie
@@ -717,53 +659,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1515388, y: 4.2078247}
   m_EdgeRadius: 0
---- !u!114 &5424904254383644426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7834887329846169306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dab131f24affd749914b33850e88d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 160
-  isStatic: 0
-  isWalker: 1
-  isWalkingRight: 1
-  wallCheck: {fileID: 5038194164994940049}
-  wallDetected: 0
-  detectionRaidus: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  projectilePrefab: {fileID: 0}
-  attackPoint: {fileID: 0}
-  attackSpeed: 2
-  nextAttackTime: 0
-  zombieDamageLow: 1
-  zombieDamageMedium: 3
-  zombieDamageHigh: 5
-  Wall: {fileID: 0}
-  collidingObject: {fileID: 0}
-  state: 0
---- !u!114 &8016670344252702995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7834887329846169306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0741dbbd7dc7854c8bd7831d09a11f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  mevcutCan: 0
-  isDead: 0
 --- !u!1 &8630717578698406730
 GameObject:
   m_ObjectHideFlags: 0
@@ -775,7 +670,6 @@ GameObject:
   - component: {fileID: 1471046223736581687}
   - component: {fileID: 6467990804342757575}
   - component: {fileID: 6511598535462574900}
-  - component: {fileID: 8423384108970123404}
   - component: {fileID: 7025067038367547552}
   m_Layer: 7
   m_Name: zombieHead
@@ -896,19 +790,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2566833, y: 1.6597722}
   m_EdgeRadius: 0
---- !u!114 &8423384108970123404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8630717578698406730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 100
 --- !u!50 &7025067038367547552
 Rigidbody2D:
   serializedVersion: 4
@@ -947,7 +828,6 @@ GameObject:
   - component: {fileID: 5399988524896730448}
   - component: {fileID: 944621087326219770}
   - component: {fileID: 807594178157234091}
-  - component: {fileID: 2111032143419021602}
   - component: {fileID: 2003583522742379860}
   m_Layer: 7
   m_Name: zombieBody
@@ -1068,19 +948,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1302071, y: 1.4654865}
   m_EdgeRadius: 0
---- !u!114 &2111032143419021602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8764476731430823026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81acf892915f53b488ecb9e6af8f29d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPercent: 80
 --- !u!50 &2003583522742379860
 Rigidbody2D:
   serializedVersion: 4

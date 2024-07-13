@@ -263,7 +263,6 @@ GameObject:
   - component: {fileID: 4256099921965368103}
   - component: {fileID: 6689875121652749861}
   - component: {fileID: 4024354806915880440}
-  - component: {fileID: 982626897909383193}
   m_Layer: 0
   m_Name: npc
   m_TagString: Player
@@ -305,7 +304,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -364,26 +363,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6408621, y: 2.7769375}
   m_EdgeRadius: 0
---- !u!114 &982626897909383193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934323526613921658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b0f4f5e92ac0c24b88e7fe8adc6c62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NPCmermiPrefab: {fileID: 0}
-  NPCMermiCikisNoktasi: {fileID: 0}
-  fireSpeed: 3
-  maxY: 5
-  minY: -9
-  maxX: 21
-  minX: 20
-  fireCooldown: 0
 --- !u!1 &5183888490689857950
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3764190836559752770}
   m_Layer: 0
-  m_Name: MermiCikisNoktasi
+  m_Name: NPCMermiCikisNoktasi
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
