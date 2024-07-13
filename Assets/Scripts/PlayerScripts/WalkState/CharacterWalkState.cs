@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CharacterState/WalkState")]
@@ -10,7 +8,7 @@ public class CharacterWalkState : CharacterState
     public override void Enter()
     {
         Debug.Log("entered walk state");
-        rigidBody2D = CharacterStateMachine.playerManager.rigidBody2D;
+        rigidBody2D = characterStateMachine.Rb;
     }
 
     public override void Exit()
