@@ -20,20 +20,23 @@ public class CharacterStateMachine : MonoBehaviour
     {
         playerManager = GetComponent<PlayerManager>();
         
-        characterIdleState = Instantiate(characterIdleStateTemplate);
-        characterWalkState = Instantiate(characterWalkStateTemplate);
+        //characterIdleState = Instantiate(characterIdleStateTemplate);
+        //characterWalkState = Instantiate(characterWalkStateTemplate);
 
-        characterIdleState.Initilaize(this);
-        characterWalkState.Initilaize(this);
+        //characterIdleState.Initilaize(this);
+        //characterWalkState.Initilaize(this);
 
-     
-        
+        InitFromSO(characterIdleStateTemplate, out characterIdleState);
+        InitFromSO(characterWalkStateTemplate, out characterWalkState);
+
     }
-    CharacterState InitFromSO(CharacterState stateTemplate){
-        CharacterState s = Instantiate(stateTemplate);
-        s.Initilaize(this);
-        return s;
+
+    void InitFromSO<T>(CharacterState stateTemplate, out T state) where T : CharacterState
+    {
+        state = (T)Instantiate(stateTemplate);
+        state.Initilaize(this);
     }
+
     void Start()
     {
         ChangeState(characterIdleState);
