@@ -6,18 +6,16 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     public PlayerMovement MovementM { get; set; }
+    public Rigidbody2D rigidBody2D { get; set; }
     
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         MovementM = GetComponent<PlayerMovement>();
+        rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void ChangeState(States states)
-    {
-        
-    }
 
 
 }

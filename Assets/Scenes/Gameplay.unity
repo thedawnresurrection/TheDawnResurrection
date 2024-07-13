@@ -295,8 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82da7e6ab28b21c40b5ae634512f2dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallHealth: 100
-  wallMevcutCan: 0
 --- !u!1 &245617203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1650,11 @@ Transform:
   - {fileID: 1026384948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &870706326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8570512135795859035, guid: 3818b052e41fc5e42889c9e483c9b350, type: 3}
+  m_PrefabInstance: {fileID: 4111668426637762865}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1000723351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1823,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244714534}
-  - component: {fileID: 1244714533}
   m_Layer: 6
   m_Name: ZombieSpawn
   m_TagString: Zombie
@@ -1828,27 +1830,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1244714533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244714532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52a8cc93f7756d48b682094657c6045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Zombie1: {fileID: 7834887329846169306, guid: 70798b4c7a9ed344f93e7e459904a3d3, type: 3}
-  spawnPoint: {fileID: 0}
-  spawners:
-  - {fileID: 673374707}
-  - {fileID: 571236710}
-  - {fileID: 1518061500}
-  - {fileID: 2033612714}
-  - {fileID: 371429623}
-  - {fileID: 702163620}
 --- !u!4 &1244714534
 Transform:
   m_ObjectHideFlags: 0
@@ -2071,9 +2052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97423f0e804f3147a93a7bd2a59c713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmmoText: {fileID: 1495457654}
-  ammoController: {fileID: 0}
-  ammoFillImg: {fileID: 1707348056}
 --- !u!114 &1378147809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,7 +2551,6 @@ GameObject:
   - component: {fileID: 1761930005}
   - component: {fileID: 1761930004}
   - component: {fileID: 1761930008}
-  - component: {fileID: 1761930009}
   m_Layer: 8
   m_Name: sheet top
   m_TagString: wall
@@ -2721,20 +2698,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &1761930009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761930003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82da7e6ab28b21c40b5ae634512f2dd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallHealth: 100
-  wallMevcutCan: 0
 --- !u!1001 &1821208082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2969,8 +2932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82da7e6ab28b21c40b5ae634512f2dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallHealth: 100
-  wallMevcutCan: 0
 --- !u!1 &1897116783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,6 +3191,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4658499858237609660, guid: 3818b052e41fc5e42889c9e483c9b350, type: 3}
   m_PrefabInstance: {fileID: 4111668426637762865}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1812087895644969461 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7552111455462604987, guid: 3818b052e41fc5e42889c9e483c9b350, type: 3}
+  m_PrefabInstance: {fileID: 4111668426637762865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870706326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b2c8a4b70fd92748ba828e931844703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1812087895644969468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870706326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77eb243160b215645a994b591aeb0b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  playerManager: {fileID: 1812087895644969461}
+  canTransitionState: 1
+  characterIdleStateTemplate: {fileID: 11400000, guid: 218bcf7d7d8ff9448afde7e3cfcc33b0, type: 2}
+  characterWalkStateTemplate: {fileID: 11400000, guid: b34b83847182e7b4fb222d8283858e0c, type: 2}
+  characterIdleState: {fileID: 0}
+  characterWalkState: {fileID: 0}
 --- !u!1001 &4111668426637762865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3285,7 +3276,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8570512135795859035, guid: 3818b052e41fc5e42889c9e483c9b350, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1812087895644969468}
   m_SourcePrefab: {fileID: 100100000, guid: 3818b052e41fc5e42889c9e483c9b350, type: 3}
 --- !u!1001 &4459220027413427238
 PrefabInstance:
