@@ -53,6 +53,7 @@ public class PlayerWeaponBase : MonoBehaviour
         var bullet = Instantiate(baseBullet, bulletSpawnTransform.position, Quaternion.identity);
         bullet.Initialize(body.transform.right,currentWeaponData.bulletSpeed,currentWeaponData.damage);
         muzzleFlash.SetActive(true);
+        currentWeaponData.fireClip.PlayClip2D(this, 1, UnityEngine.Random.Range(0.92f, 1.05f));
         DOVirtual.DelayedCall(0.07f, delegate
         {
             muzzleFlash.SetActive(false);

@@ -14,13 +14,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Bullet
+  - 
   - Water
   - UI
-  - zombie
-  - organ
-  - wall
-  - background
+  - Zombies
+  - 
+  - 
+  - 
   - 
   - 
   - 
