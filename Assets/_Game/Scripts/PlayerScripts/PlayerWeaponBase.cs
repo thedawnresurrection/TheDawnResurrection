@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerWeaponBase : MonoBehaviour
 {
-    public SpriteRenderer aimRenderer;
     public Transform body;
     private Camera cam;
 
@@ -16,6 +15,36 @@ public class PlayerWeaponBase : MonoBehaviour
     public GameObject muzzleFlash;
     private float fireTimer;
 
+    private Animator playerAnimator;
+    private bool fire = true;
+
+    private void OnEnable()
+    {
+        playerAnimator = GetComponentInParent<Animator>();
+        if (currentWeaponData.weaponType == WeaponType.Pistol)
+        {
+            playerAnimator.SetBool("HasPistol", true);
+        }
+        if (currentWeaponData.weaponType == WeaponType.Rifle)
+        {
+            playerAnimator.SetBool("HasPistol", false);
+        }
+        
+    }
+
+    private void Start()
+    {
+        GameEvents.AmmoResourceNoMoreEvent.AddListener(AmmoResourceNoMore);
+    }
+    private void OnDestroy()
+    {
+        GameEvents.AmmoResourceNoMoreEvent.RemoveListener(AmmoResourceNoMore);
+    }
+
+    private void AmmoResourceNoMore()
+    {
+        fire = false;
+    }
 
     private void Awake()
     {
@@ -25,11 +54,7 @@ public class PlayerWeaponBase : MonoBehaviour
     }
     public void Update()
     {
-        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-        aimRenderer.transform.position = mousePosition;
-
-
+        
         var dir  = Input.mousePosition - cam.WorldToScreenPoint(transform.position);
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         var rot = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -40,16 +65,22 @@ public class PlayerWeaponBase : MonoBehaviour
         body.eulerAngles = bodyEuler;
 
 
-        fireTimer += Time.deltaTime;
-        if (Input.GetMouseButton(0) && fireTimer>=currentWeaponData.fireRate)
+        if (fire)
         {
-            fireTimer = 0;
-            Fire();
+            fireTimer += Time.deltaTime;
+            if (Input.GetMouseButton(0) && fireTimer >= currentWeaponData.fireRate)
+            {
+                fireTimer = 0;
+                Fire();
+            }
         }
+        
     }
 
     private void Fire()
     {
+        GameEvents.AmmoResourceUsedEvent?.Invoke(currentWeaponData.resourceAmount);
+
         var bullet = Instantiate(baseBullet, bulletSpawnTransform.position, Quaternion.identity);
         bullet.Initialize(body.transform.right,currentWeaponData.bulletSpeed,currentWeaponData.damage);
         muzzleFlash.SetActive(true);

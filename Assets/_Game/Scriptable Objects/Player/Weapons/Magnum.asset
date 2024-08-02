@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d92d68c1585e2e740ac4221fd76ea1f1, type: 3}
-  m_Name: Rifle
+  m_Name: Magnum
   m_EditorClassIdentifier: 
-  weaponName: Rifle
-  weaponType: 1
-  bulletSpeed: 70
-  fireRate: 0.2
-  damage: 15
-  resourceAmount: 1
+  weaponName: Pistol
+  weaponType: 0
+  bulletSpeed: 60
+  fireRate: 1
+  damage: 30
+  resourceAmount: 2
   fireClip: {fileID: 8300000, guid: 77bc9e7c88041bf489585baf4302afe2, type: 3}
