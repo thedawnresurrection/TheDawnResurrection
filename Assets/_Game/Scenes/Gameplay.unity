@@ -2933,7 +2933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2cbecb7ac75924b95518ab462a476e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwablePrefab: {fileID: 4725962987816862135, guid: 988890fd4bb6d5849aa3d4db8d071d18, type: 3}
+  throwablePrefab: {fileID: -5496055369721579913, guid: 988890fd4bb6d5849aa3d4db8d071d18, type: 3}
   previewPrefab: {fileID: 4725962987816862135, guid: b9701f5cfcdaf6c46910f19258c86e3d, type: 3}
   throwHeight: 3
   throwDuration: 1
