@@ -265,6 +265,9 @@ MonoBehaviour:
   shadowTransform: {fileID: 3251405074889131392}
   spriteRenderer: {fileID: 1923504365344468862}
   zombieHeadPrefab: {fileID: 4080936159342380450, guid: f3a2498fa700f1348bb6b1a8b90d49a6, type: 3}
+  bloodEffectPrefab: {fileID: 1408841087760154652, guid: b8ee9683482976247a95287e80cd0131, type: 3}
+  attackTime: 4
+  damage: 10
 --- !u!1 &3029276033330021687
 GameObject:
   m_ObjectHideFlags: 0

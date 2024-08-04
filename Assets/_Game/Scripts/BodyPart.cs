@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class BodyPart : MonoBehaviour
+public class BodyPart : MonoBehaviour,IDamageable
 {
     public BodyType bodyType;
     private BaseZombie baseZombie;
@@ -15,7 +15,7 @@ public class BodyPart : MonoBehaviour
         collider = GetComponent<Collider2D>();
         baseZombie = GetComponentInParent<BaseZombie>();
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 bloodPos)
     {
         int newDamage = damage;
         switch (bodyType)
@@ -35,7 +35,7 @@ public class BodyPart : MonoBehaviour
                 break;
         }
         
-        baseZombie.TakeDamage(newDamage);
+        baseZombie.TakeDamage(newDamage, bloodPos);
     }
 
     private void HeadRupture()

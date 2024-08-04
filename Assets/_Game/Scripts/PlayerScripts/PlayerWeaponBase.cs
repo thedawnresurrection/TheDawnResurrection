@@ -56,13 +56,17 @@ public class PlayerWeaponBase : MonoBehaviour
     {
         
         var dir  = Input.mousePosition - cam.WorldToScreenPoint(transform.position);
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        var rot = Quaternion.AngleAxis(angle, Vector3.forward);
-        body.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (dir.x < -50)
+        {
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            var rot = Quaternion.AngleAxis(angle, Vector3.forward);
+            body.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        var bodyEuler = body.eulerAngles;
-        bodyEuler.z = Mathf.Clamp(bodyEuler.z, 100, 250);
-        body.eulerAngles = bodyEuler;
+            var bodyEuler = body.eulerAngles;
+            bodyEuler.z = Mathf.Clamp(bodyEuler.z, 100, 250);
+            body.eulerAngles = bodyEuler;
+        }
+      
 
 
         if (fire)

@@ -11,7 +11,6 @@ public class BaseBullet : MonoBehaviour
     private Vector2 dir;
     private float bulletSpeed;
     [NonSerialized]public int damage;
-    public GameObject bloodEffectPrefab;
     public void Initialize(Vector2 _dir,float _bulletSpeed,int _damage)
     {
         dir = _dir;
@@ -28,17 +27,16 @@ public class BaseBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.TryGetComponent(out IDamageable damageable))
+        {
+            Vector3 collisionPoint = collision.bounds.ClosestPoint(transform.position);
+            damageable.TakeDamage(damage,collisionPoint);
+            Destroy(gameObject);
+        }
+
         if (collision.TryGetComponent(out BodyPart bodyPart))
         {
-            bodyPart.TakeDamage(damage);
-            Debug.Log(" Target Body Type :  " + bodyPart.bodyType.ToString());
-            Destroy(gameObject);
-
-            Vector3 collisionPoint = collision.bounds.ClosestPoint(transform.position);
-            Quaternion collisionRotation = Quaternion.LookRotation(Vector3.forward, collision.transform.up);
-
-            var blood = Instantiate(bloodEffectPrefab, collisionPoint,Quaternion.identity);
-            blood.transform.SetParent(bodyPart.transform);
+        //    Debug.Log(" Target Body Type :  " + bodyPart.bodyType.ToString());   
         }
         
     }
