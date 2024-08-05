@@ -23,6 +23,28 @@ public class BaseZombie : MonoBehaviour
     private float attackTimer;
     public float attackTime = 1f;
     public float damage = 3;
+    private bool freeze;
+
+    private void Start()
+    {
+        GameEvents.ExpolisionFlashBomb.AddListener(ExpolisionFlashBomb);
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.ExpolisionFlashBomb.RemoveListener(ExpolisionFlashBomb);
+    }
+    private void ExpolisionFlashBomb(float duration, float freezeTime)
+    {
+        if (!freeze)
+        {
+            freeze = true;
+            DOVirtual.DelayedCall(freezeTime, delegate ()
+            {
+                freeze = false;
+            });
+        }
+    }
     private void Awake()
     {
         health = maxHealth;
@@ -32,6 +54,8 @@ public class BaseZombie : MonoBehaviour
     }
     private void Update()
     {
+        if (freeze) return;
+
         attackTimer += Time.deltaTime;
         if(!die && targetBarricade && attackTimer>=attackTime)
         {
@@ -52,7 +76,7 @@ public class BaseZombie : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!die && !targetBarricade)
+        if (!die && !targetBarricade && !freeze)
         {
             rb.velocity = new Vector2(moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
             animator.SetBool("IsMove", rb.velocity.magnitude > 0.2f);

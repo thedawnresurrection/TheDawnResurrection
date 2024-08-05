@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class PlayerThrowableBase : MonoBehaviour
 {
-    public BaseBomb throwablePrefab; 
+    public BaseBomb grandePrefab,molotovPrefab,flashBombPrefab; 
     public GameObject previewPrefab; 
     public float throwHeight = 2f; 
     public float throwDuration = 1f; 
@@ -23,48 +23,60 @@ public class PlayerThrowableBase : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.G))
         {
-            ShowPreview();
+            ShowPreview(grandePrefab);
         }
         if (Input.GetKeyUp(KeyCode.G))
         {
-            ThrowObject();
+            ThrowObject(grandePrefab);
+        }
+
+        if (Input.GetKey(KeyCode.H))
+        {
+            ShowPreview(molotovPrefab);
+        }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            ThrowObject(molotovPrefab);
+        }
+
+        if (Input.GetKey(KeyCode.J))
+        {
+            ShowPreview(flashBombPrefab);
+        }
+        if (Input.GetKeyUp(KeyCode.J))
+        {
+            ThrowObject(flashBombPrefab);
         }
     }
 
-    void ShowPreview()
+    void ShowPreview(BaseBomb baseBombPrefab)
     {
         if (previewObject == null)
         {
             previewObject = Instantiate(previewPrefab, transform.position, Quaternion.identity);
         }
 
-        // Önizleme nesnesini oyuncunun yönüne göre güncelleyin
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         previewObject.transform.position = mousePosition;
-        previewObject.transform.localScale = new Vector3(throwablePrefab.radius, throwablePrefab.radius, throwablePrefab.radius);
+        previewObject.transform.localScale = new Vector3(baseBombPrefab.radius, baseBombPrefab.radius, baseBombPrefab.radius);
     }
 
-    void ThrowObject()
+    void ThrowObject(BaseBomb baseBomb)
     {
         if (previewObject != null)
         {
-            // Fýrlatýlacak nesneyi oluþturun
-            BaseBomb throwableObject = Instantiate(throwablePrefab, transform.position, Quaternion.identity);
-
-            // Ses efekti çal
+            BaseBomb throwableObject = Instantiate(baseBomb, transform.position, Quaternion.identity);
             if (throwSound != null)
             {
                 audioSource.PlayOneShot(throwSound);
             }
 
-            // Parçacýk efekti oluþtur
             if (throwEffect != null)
             {
                 Instantiate(throwEffect, transform.position, Quaternion.identity);
             }
 
-            // Yukarýya doðru ve sonra yere doðru parabolik hareket için DoTween kullanýn
             Vector3 targetPosition = previewObject.transform.position;
             Vector3 peakPosition = (transform.position + targetPosition) / 2 + Vector3.up * throwHeight;
 
@@ -72,7 +84,6 @@ public class PlayerThrowableBase : MonoBehaviour
             throwSequence.Append(throwableObject.transform.DOJump(targetPosition, throwHeight, 1, throwDuration).SetEase(Ease.Linear));
             throwSequence.Join(throwableObject.transform.DORotate(new Vector3(0, 0, rotationSpeed), throwDuration, RotateMode.FastBeyond360));
 
-            // Önizleme nesnesini yok edin
             Destroy(previewObject);
             previewObject = null;
         }

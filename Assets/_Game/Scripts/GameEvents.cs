@@ -13,4 +13,8 @@ public static class GameEvents
     
     public static UnityEvent BarricadeTakeDamageEvent = new UnityEvent();
 
+    public static UnityEvent ExpolisionGrenadeBomb = new UnityEvent();
+    public static UnityEvent ExpolisionMolotovBomb = new UnityEvent();
+    public static UnityEvent<float,float> ExpolisionFlashBomb = new UnityEvent<float,float>();
+
 }
