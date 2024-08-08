@@ -405,7 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52563a46f080de747a54a29e6ae63762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  barricadeData:
+  - {fileID: 11400000, guid: 8cf54932f3b2a7046811e7c9c62ee478, type: 2}
+  - {fileID: 11400000, guid: a32fb3802db01874399d4ac46b62ba38, type: 2}
+  - {fileID: 11400000, guid: 56e2f5897fc70c6468e47f34d756aa72, type: 2}
 --- !u!50 &166696186
 Rigidbody2D:
   serializedVersion: 4
@@ -2035,7 +2038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026384948}
   m_Layer: 0
-  m_Name: Walls
+  m_Name: Barricades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3238,7 +3241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52563a46f080de747a54a29e6ae63762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  barricadeData:
+  - {fileID: 11400000, guid: 8cf54932f3b2a7046811e7c9c62ee478, type: 2}
+  - {fileID: 11400000, guid: a32fb3802db01874399d4ac46b62ba38, type: 2}
+  - {fileID: 11400000, guid: 56e2f5897fc70c6468e47f34d756aa72, type: 2}
 --- !u!50 &1761930009
 Rigidbody2D:
   serializedVersion: 4
@@ -3642,7 +3648,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52563a46f080de747a54a29e6ae63762, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  barricadeData:
+  - {fileID: 11400000, guid: 8cf54932f3b2a7046811e7c9c62ee478, type: 2}
+  - {fileID: 11400000, guid: a32fb3802db01874399d4ac46b62ba38, type: 2}
+  - {fileID: 11400000, guid: 56e2f5897fc70c6468e47f34d756aa72, type: 2}
 --- !u!50 &1852920368
 Rigidbody2D:
   serializedVersion: 4
