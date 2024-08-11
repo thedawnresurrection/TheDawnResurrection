@@ -10,6 +10,9 @@ public class BaseBomb : MonoBehaviour
     public bool damager = true;
     public int damage = 100;
     public float explosionTime = 2f;
+
+    protected RaycastHit2D[] hits;
+
     private void Start()
     {
         Invoke(nameof(Explosion), explosionTime);
@@ -25,7 +28,7 @@ public class BaseBomb : MonoBehaviour
 
         if (damager)
         {
-            var hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.up, distance);
+            hits = Physics2D.CircleCastAll(transform.position, radius, Vector2.up, distance);
             foreach (var hit in hits)
             {
                 if (hit.collider != null)
@@ -37,7 +40,7 @@ public class BaseBomb : MonoBehaviour
                 }
             }
         }
-       
+
         Destroy(gameObject);
     }
     private void OnDrawGizmos()

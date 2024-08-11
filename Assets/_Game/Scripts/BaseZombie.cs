@@ -13,6 +13,7 @@ public class BaseZombie : MonoBehaviour
     public int maxHealth;
     private int health;
     private bool die;
+    public bool Die => die;
 
     public Transform shadowTransform;
     public SpriteRenderer spriteRenderer;
@@ -57,7 +58,7 @@ public class BaseZombie : MonoBehaviour
         if (freeze) return;
 
         attackTimer += Time.deltaTime;
-        if(!die && targetBarricade && attackTimer>=attackTime)
+        if (!die && targetBarricade && attackTimer >= attackTime)
         {
             attackTimer = 0;
             PlayAttackAnimation();
@@ -86,7 +87,7 @@ public class BaseZombie : MonoBehaviour
             rb.velocity = Vector2.zero;
             animator.SetBool("IsMove", false);
         }
-        
+
     }
     private void DisableBodyParts()
     {
@@ -96,7 +97,7 @@ public class BaseZombie : MonoBehaviour
             part.CloseCollider();
         }
     }
-    public void TakeDamage(int damage,Vector3 bloodPos)
+    public void TakeDamage(int damage, Vector3 bloodPos)
     {
         if (die) return;
         var blood = Instantiate(bloodEffectPrefab, bloodPos, Quaternion.identity);
@@ -112,7 +113,7 @@ public class BaseZombie : MonoBehaviour
             animator.SetTrigger("DieTrigger");
             DisableBodyParts();
 
-            DOVirtual.DelayedCall(3, delegate()
+            DOVirtual.DelayedCall(3, delegate ()
             {
                 spriteRenderer.DOColor(Color.clear, 1f).OnComplete(delegate ()
                 {

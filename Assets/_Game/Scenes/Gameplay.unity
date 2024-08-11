@@ -3014,7 +3014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grandePrefab: {fileID: -5496055369721579913, guid: 988890fd4bb6d5849aa3d4db8d071d18, type: 3}
-  molotovPrefab: {fileID: -5496055369721579913, guid: d50282a28dbac714a93901df40d07d46, type: 3}
+  molotovPrefab: {fileID: 1121812909797082017, guid: d50282a28dbac714a93901df40d07d46, type: 3}
   flashBombPrefab: {fileID: 5164331354075965324, guid: e0d1d28e736a7a34aa4c2eba37039224, type: 3}
   previewPrefab: {fileID: 4725962987816862135, guid: b9701f5cfcdaf6c46910f19258c86e3d, type: 3}
   throwHeight: 3

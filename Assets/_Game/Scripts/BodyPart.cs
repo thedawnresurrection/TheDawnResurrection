@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class BodyPart : MonoBehaviour,IDamageable
+public class BodyPart : MonoBehaviour, IDamageable
 {
     public BodyType bodyType;
     private BaseZombie baseZombie;
@@ -34,8 +34,21 @@ public class BodyPart : MonoBehaviour,IDamageable
                 newDamage = damage / 2;
                 break;
         }
-        
+
         baseZombie.TakeDamage(newDamage, bloodPos);
+    }
+    public void TimedDamage(int damage, Vector3 bloodPos, int repeatCount, float repeatTime)
+    {
+        StartCoroutine(coroutine());
+        IEnumerator coroutine()
+        {
+            for (int i = 0; i < repeatCount; i++)
+            {
+                yield return new WaitForSeconds(repeatTime);
+                if (!baseZombie.Die && bodyType != BodyType.Head)
+                    TakeDamage(damage, transform.position);
+            }
+        }
     }
 
     private void HeadRupture()
@@ -45,12 +58,12 @@ public class BodyPart : MonoBehaviour,IDamageable
         //parent.transform.position = transform.position - Vector3.up * 2.2f;
 
         CloseCollider();
-        SpriteMask  spriteMask = GetComponentInChildren<SpriteMask>();
+        SpriteMask spriteMask = GetComponentInChildren<SpriteMask>();
         if (spriteMask)
         {
             spriteMask.enabled = true;
         }
-        var zombieHead =Instantiate(baseZombie.zombieHeadPrefab, transform.position, Quaternion.identity);
+        var zombieHead = Instantiate(baseZombie.zombieHeadPrefab, transform.position, Quaternion.identity);
         float randomY = Random.Range(4f, 4.5f);
         float randomX = Random.Range(2f, 4f);
         zombieHead.transform.DOMoveY(zombieHead.transform.position.y - randomY, 0.3f).SetEase(Ease.Linear);
@@ -66,5 +79,5 @@ public class BodyPart : MonoBehaviour,IDamageable
         collider.enabled = false;
     }
 
-   
+
 }
