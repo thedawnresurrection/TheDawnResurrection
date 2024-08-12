@@ -23,18 +23,18 @@ public class GameplayUI : MonoBehaviour
     private void AmmoResourceAmountUpdate(float maxAmmo, float currentAmmo)
     {
         ammoFillImage.fillAmount = currentAmmo / maxAmmo;
-        ammoText.text = "%"+((currentAmmo / maxAmmo) * 100).ToString();
+        ammoText.text = "%" + Convert.ToInt32((currentAmmo / maxAmmo) * 100).ToString();
     }
-    private void ExpolisionFlashBomb(float duration,float freezeTime)
+    private void ExpolisionFlashBomb(float duration, float freezeTime)
     {
-        DOVirtual.Float(0, 1, duration/4, delegate (float x)
+        DOVirtual.Float(0, 1, duration / 4, delegate (float x)
         {
             Color color = flashImage.color;
             color.a = x;
             flashImage.color = color;
         }).OnComplete(delegate
         {
-            DOVirtual.Float(1, 0,duration/2, delegate (float x)
+            DOVirtual.Float(1, 0, duration / 2, delegate (float x)
             {
                 Color color = flashImage.color;
                 color.a = x;

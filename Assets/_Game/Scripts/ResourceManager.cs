@@ -21,14 +21,14 @@ public class ResourceManager : MonoBehaviour
         GameEvents.AmmoResourceUsedEvent.RemoveListener(BulletResourceUsed);
 
     }
-    private void BulletResourceUsed(int amount)
+    private void BulletResourceUsed(float amount)
     {
         ammoResource -= amount;
-        if(ammoResource <= 0)
+        if (ammoResource <= 0)
         {
             ammoResource = 0;
             GameEvents.AmmoResourceNoMoreEvent?.Invoke();
         }
-        GameEvents.AmmoResourceAmountUpdate?.Invoke(maxAmmoResource,ammoResource);
+        GameEvents.AmmoResourceAmountUpdate?.Invoke(maxAmmoResource, ammoResource);
     }
 }
