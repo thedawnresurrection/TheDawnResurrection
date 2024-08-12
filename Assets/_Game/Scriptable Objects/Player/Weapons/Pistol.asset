@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pistol
   weaponType: 0
-  bulletSpeed: 60
+  bulletSpeed: 70
   fireRate: 0.5
   damage: 20
   resourceAmount: 1

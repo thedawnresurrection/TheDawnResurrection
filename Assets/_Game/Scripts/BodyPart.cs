@@ -8,8 +8,13 @@ using UnityEngine.U2D.Animation;
 public class BodyPart : MonoBehaviour, IDamageable
 {
     public BodyType bodyType;
+    public bool left, right;
+    public SpriteRenderer renderer;
     private BaseZombie baseZombie;
     private Collider2D collider;
+
+    public List<Collider2D> disableColliders;
+
     private void Awake()
     {
         collider = GetComponent<Collider2D>();
@@ -32,6 +37,7 @@ public class BodyPart : MonoBehaviour, IDamageable
                 break;
             case BodyType.Leg:
                 newDamage = damage / 2;
+                LegRupture();
                 break;
         }
 
@@ -53,16 +59,9 @@ public class BodyPart : MonoBehaviour, IDamageable
 
     private void HeadRupture()
     {
-        //GameObject parent = new GameObject("Parent");
-        //transform.SetParent(parent.transform);
-        //parent.transform.position = transform.position - Vector3.up * 2.2f;
 
         CloseCollider();
-        SpriteMask spriteMask = GetComponentInChildren<SpriteMask>();
-        if (spriteMask)
-        {
-            spriteMask.enabled = true;
-        }
+        renderer.enabled = false;
         var zombieHead = Instantiate(baseZombie.zombieHeadPrefab, transform.position, Quaternion.identity);
         float randomY = Random.Range(4f, 4.5f);
         float randomX = Random.Range(2f, 4f);
@@ -71,11 +70,31 @@ public class BodyPart : MonoBehaviour, IDamageable
         {
             zombieHead.transform.Rotate(Vector3.forward * 10);
         });
+    }
+    private void LegRupture()
+    {
+        if (Random.value > 0.3f) return;
+        CloseCollider();
+        renderer.enabled = false;
+        var prefab = baseZombie.zombieLeftLeg;
+        if (right) prefab = baseZombie.zombieRightLef;
 
+        var zombieLeg = Instantiate(prefab, transform.position, Quaternion.identity);
+        float randomY = Random.Range(4f, 4.5f);
+        float randomX = Random.Range(2f, 4f);
+        //zombieLeg.transform.DOMoveY(zombieLeg.transform.position.y - randomY, 0.3f).SetEase(Ease.Linear);
+        zombieLeg.transform.DOMoveX(zombieLeg.transform.position.x - randomX, 0.6f).SetEase(Ease.Linear).OnUpdate(delegate
+        {
+            zombieLeg.transform.Rotate(Vector3.forward);
+        });
     }
 
     public void CloseCollider()
     {
+        foreach (var item in disableColliders)
+        {
+            item.enabled = false;
+        }
         collider.enabled = false;
     }
 

@@ -16,10 +16,10 @@ public class BaseZombie : MonoBehaviour
     public bool Die => die;
 
     public Transform shadowTransform;
-    public SpriteRenderer spriteRenderer;
     public GameObject zombieHeadPrefab;
+    public GameObject zombieLeftLeg, zombieRightLef;
     public GameObject bloodEffectPrefab;
-
+    public List<SpriteRenderer> renderers;
     private Barricade targetBarricade;
     private float attackTimer;
     public float attackTime = 1f;
@@ -49,7 +49,7 @@ public class BaseZombie : MonoBehaviour
     private void Awake()
     {
         health = maxHealth;
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
     }
@@ -112,10 +112,13 @@ public class BaseZombie : MonoBehaviour
             animator.SetBool("Die", true);
             animator.SetTrigger("DieTrigger");
             DisableBodyParts();
-
-            DOVirtual.DelayedCall(3, delegate ()
+            DOVirtual.DelayedCall(3f, delegate
             {
-                spriteRenderer.DOColor(Color.clear, 1f).OnComplete(delegate ()
+                foreach (var renderer in renderers)
+                {
+                    renderer.DOColor(Color.clear, 1f);
+                }
+                DOVirtual.DelayedCall(1f, delegate
                 {
                     Destroy(gameObject);
                 });
