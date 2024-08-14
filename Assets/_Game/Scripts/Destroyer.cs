@@ -13,10 +13,16 @@ public class Destroyer : MonoBehaviour
         {
             DOVirtual.DelayedCall(destroyTime / 2, delegate
             {
-                spriteRenderer.DOColor(Color.clear, destroyTime / 2);
+                spriteRenderer.DOColor(Color.clear, destroyTime / 2).OnComplete(delegate
+                {
+                    Destroy(gameObject);
+                });
             });
         }
-        Destroy(gameObject, destroyTime);
+    }
+    private void OnDestroy()
+    {
+        DOTween.KillAll();
     }
 
 

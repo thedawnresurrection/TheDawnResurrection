@@ -112,17 +112,6 @@ public class BaseZombie : MonoBehaviour
             animator.SetBool("Die", true);
             animator.SetTrigger("DieTrigger");
             DisableBodyParts();
-            DOVirtual.DelayedCall(3f, delegate
-            {
-                foreach (var renderer in renderers)
-                {
-                    renderer.DOColor(Color.clear, 1f);
-                }
-                DOVirtual.DelayedCall(1f, delegate
-                {
-                    Destroy(gameObject);
-                });
-            });
 
         }
     }
@@ -131,6 +120,13 @@ public class BaseZombie : MonoBehaviour
         if (collision.TryGetComponent(out Barricade barricade))
         {
             targetBarricade = barricade;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out Barricade barricade))
+        {
+            targetBarricade = null;
         }
     }
 }
