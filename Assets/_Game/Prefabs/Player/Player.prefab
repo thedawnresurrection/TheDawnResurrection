@@ -1064,7 +1064,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd2c2a3de806f94eb8fdfff0e116a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimRenderer: {fileID: 1892130379184549399}
+  body: {fileID: 0}
+  currentWeaponData: {fileID: 0}
+  baseBullet: {fileID: 0}
+  bulletSpawnTransform: {fileID: 0}
+  muzzleFlash: {fileID: 0}
 --- !u!1 &8886609561572236587
 GameObject:
   m_ObjectHideFlags: 0
