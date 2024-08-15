@@ -25,7 +25,6 @@ public class BaseZombie : MonoBehaviour
     public float attackTime = 1f;
     public float damage = 3;
     private bool freeze;
-
     private void Start()
     {
         GameEvents.ExpolisionFlashBomb.AddListener(ExpolisionFlashBomb);
@@ -113,7 +112,20 @@ public class BaseZombie : MonoBehaviour
             animator.SetTrigger("DieTrigger");
             DisableBodyParts();
 
+            DOVirtual.DelayedCall(1f, delegate
+            {
+                foreach (var renderer in renderers)
+                {
+                    Tween colorTween = renderer.DOColor(Color.clear, 1f);
+                }
+                Destroy(gameObject, 1.1f);
+            });
+
         }
+    }
+    public void LegRupture()
+    {
+        animator.SetBool("LegRupture", true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -12,7 +12,6 @@ public class BodyPart : MonoBehaviour, IDamageable
     public SpriteRenderer renderer;
     private BaseZombie baseZombie;
     private Collider2D collider;
-
     public List<Collider2D> disableColliders;
 
     private void Awake()
@@ -74,7 +73,9 @@ public class BodyPart : MonoBehaviour, IDamageable
     private void LegRupture()
     {
         if (Random.value > 0.3f) return;
+        baseZombie.LegRupture();
         CloseCollider();
+
         renderer.enabled = false;
         var prefab = baseZombie.zombieLeftLeg;
         if (right) prefab = baseZombie.zombieRightLef;
