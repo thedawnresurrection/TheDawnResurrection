@@ -29,6 +29,6 @@ public class ResourceManager : MonoBehaviour
             ammoResource = 0;
             GameEvents.AmmoResourceNoMoreEvent?.Invoke();
         }
-        GameEvents.AmmoResourceAmountUpdate?.Invoke(maxAmmoResource, ammoResource);
+        GameEvents.AmmoResourceAmountUpdateEvent?.Invoke(maxAmmoResource, ammoResource);
     }
 }

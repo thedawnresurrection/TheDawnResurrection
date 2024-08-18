@@ -6,12 +6,18 @@ using UnityEngine;
 public class Destroyer : MonoBehaviour
 {
     public float destroyTime;
+    private bool isPlaying;
+    private void OnEnable()
+    {
+
+    }
     void Start()
     {
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer)
+        if (spriteRenderer && !isPlaying)
         {
-            DOVirtual.DelayedCall(destroyTime / 2, delegate
+            isPlaying = true;
+            DOVirtual.DelayedCall(destroyTime, delegate
             {
                 spriteRenderer.DOColor(Color.clear, destroyTime / 2).OnComplete(delegate
                 {
@@ -20,10 +26,5 @@ public class Destroyer : MonoBehaviour
             });
         }
     }
-    private void OnDestroy()
-    {
-        DOTween.KillAll();
-    }
-
 
 }

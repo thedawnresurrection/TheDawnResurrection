@@ -7,7 +7,9 @@ using UnityEngine;
 public class BaseZombie : MonoBehaviour
 {
 
-    public float moveSpeed;
+    private float speed;
+    public float moveSpeed = 100;
+    public float creepSpeed = 50;
     private Rigidbody2D rb;
     private Animator animator;
     public int maxHealth;
@@ -17,7 +19,7 @@ public class BaseZombie : MonoBehaviour
 
     public Transform shadowTransform;
     public GameObject zombieHeadPrefab;
-    public GameObject zombieLeftLeg, zombieRightLef;
+    public GameObject zombieLeftLeg, zombieRightLeg;
     public GameObject bloodEffectPrefab;
     public List<SpriteRenderer> renderers;
     private Barricade targetBarricade;
@@ -25,14 +27,17 @@ public class BaseZombie : MonoBehaviour
     public float attackTime = 1f;
     public float damage = 3;
     private bool freeze;
+
     private void Start()
     {
-        GameEvents.ExpolisionFlashBomb.AddListener(ExpolisionFlashBomb);
+        GameEvents.ExpolisionFlashBombEvent.AddListener(ExpolisionFlashBomb);
+        GameEvents.ZombieBearTrapEvent.AddListener(ZombieBearTrap);
     }
 
     private void OnDestroy()
     {
-        GameEvents.ExpolisionFlashBomb.RemoveListener(ExpolisionFlashBomb);
+        GameEvents.ExpolisionFlashBombEvent.RemoveListener(ExpolisionFlashBomb);
+        GameEvents.ZombieBearTrapEvent.RemoveListener(ZombieBearTrap);
     }
     private void ExpolisionFlashBomb(float duration, float freezeTime)
     {
@@ -45,8 +50,22 @@ public class BaseZombie : MonoBehaviour
             });
         }
     }
+    private void ZombieBearTrap(BaseZombie baseZombie, float freezeTime, int damage)
+    {
+        if (this != baseZombie) return;
+        if (!freeze)
+        {
+            TakeDamage(damage, transform.position);
+            freeze = true;
+            DOVirtual.DelayedCall(freezeTime, delegate
+            {
+                freeze = false;
+            });
+        }
+    }
     private void Awake()
     {
+        speed = moveSpeed;
         health = maxHealth;
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -99,32 +118,35 @@ public class BaseZombie : MonoBehaviour
     public void TakeDamage(int damage, Vector3 bloodPos)
     {
         if (die) return;
+
         var blood = Instantiate(bloodEffectPrefab, bloodPos, Quaternion.identity);
         blood.transform.SetParent(transform);
 
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !die)
         {
+            Debug.Log("test");
             GameEvents.ZombieDieEvent?.Invoke();
 
+            DisableBodyParts();
             die = true;
             animator.SetBool("Die", true);
             animator.SetTrigger("DieTrigger");
-            DisableBodyParts();
 
             DOVirtual.DelayedCall(1f, delegate
             {
                 foreach (var renderer in renderers)
                 {
-                    Tween colorTween = renderer.DOColor(Color.clear, 1f);
+                    Tween colorTween = renderer.DOColor(Color.clear, 0.2f);
                 }
-                Destroy(gameObject, 1.1f);
+                Destroy(gameObject, 0.3f);
             });
 
         }
     }
     public void LegRupture()
     {
+        speed = creepSpeed;
         animator.SetBool("LegRupture", true);
     }
     private void OnTriggerEnter2D(Collider2D collision)

@@ -6,15 +6,17 @@ using UnityEngine.Events;
 public static class GameEvents
 {
     public static UnityEvent ZombieDieEvent = new UnityEvent();
+    public static UnityEvent<BaseZombie, float, int> ZombieBearTrapEvent = new UnityEvent<BaseZombie, float, int>();
 
     public static UnityEvent<float> AmmoResourceUsedEvent = new UnityEvent<float>();
     public static UnityEvent AmmoResourceNoMoreEvent = new UnityEvent();
-    public static UnityEvent<float, float> AmmoResourceAmountUpdate = new UnityEvent<float, float>();
+    public static UnityEvent<float, float> AmmoResourceAmountUpdateEvent = new UnityEvent<float, float>();
 
     public static UnityEvent BarricadeTakeDamageEvent = new UnityEvent();
 
-    public static UnityEvent ExpolisionGrenadeBomb = new UnityEvent();
-    public static UnityEvent ExpolisionMolotovBomb = new UnityEvent();
-    public static UnityEvent<float, float> ExpolisionFlashBomb = new UnityEvent<float, float>();
+    public static UnityEvent ExpolisionGrenadeBombEvent = new UnityEvent();
+    public static UnityEvent ExpolisionMolotovBombEvent = new UnityEvent();
+    public static UnityEvent<float, float> ExpolisionFlashBombEvent = new UnityEvent<float, float>();
+
 
 }

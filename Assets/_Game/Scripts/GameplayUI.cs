@@ -11,14 +11,14 @@ public class GameplayUI : MonoBehaviour
     public Image flashImage;
     private void Start()
     {
-        GameEvents.AmmoResourceAmountUpdate.AddListener(AmmoResourceAmountUpdate);
-        GameEvents.ExpolisionFlashBomb.AddListener(ExpolisionFlashBomb);
+        GameEvents.AmmoResourceAmountUpdateEvent.AddListener(AmmoResourceAmountUpdate);
+        GameEvents.ExpolisionFlashBombEvent.AddListener(ExpolisionFlashBomb);
     }
 
     private void OnDestroy()
     {
-        GameEvents.AmmoResourceAmountUpdate.RemoveListener(AmmoResourceAmountUpdate);
-        GameEvents.ExpolisionFlashBomb.RemoveListener(ExpolisionFlashBomb);
+        GameEvents.AmmoResourceAmountUpdateEvent.RemoveListener(AmmoResourceAmountUpdate);
+        GameEvents.ExpolisionFlashBombEvent.RemoveListener(ExpolisionFlashBomb);
     }
     private void AmmoResourceAmountUpdate(float maxAmmo, float currentAmmo)
     {

@@ -19,7 +19,7 @@ public class BaseBomb : MonoBehaviour
     }
     public virtual void Explosion()
     {
-        GameEvents.ExpolisionGrenadeBomb?.Invoke();
+        GameEvents.ExpolisionGrenadeBombEvent?.Invoke();
 
         if (explosionEffectPrefab)
         {

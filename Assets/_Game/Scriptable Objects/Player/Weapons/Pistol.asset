@@ -16,6 +16,6 @@ MonoBehaviour:
   weaponType: 0
   bulletSpeed: 70
   fireRate: 0.5
-  damage: 20
+  damage: 10
   resourceAmount: 1
   fireClip: {fileID: 8300000, guid: 77bc9e7c88041bf489585baf4302afe2, type: 3}

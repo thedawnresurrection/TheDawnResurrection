@@ -9,6 +9,6 @@ public class FlashBomb : BaseBomb
     public override void Explosion()
     {
         base.Explosion();
-        GameEvents.ExpolisionFlashBomb?.Invoke(flashScreenDuration, freezeTime);
+        GameEvents.ExpolisionFlashBombEvent?.Invoke(flashScreenDuration, freezeTime);
     }
 }

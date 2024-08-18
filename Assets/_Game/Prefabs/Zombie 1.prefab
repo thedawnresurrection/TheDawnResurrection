@@ -338,7 +338,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.39619198, y: 0.02520094}
@@ -585,6 +585,7 @@ GameObject:
   - component: {fileID: 494065122921300822}
   - component: {fileID: 5996720270823425376}
   - component: {fileID: 2425417889326251958}
+  - component: {fileID: 1288789211073807224}
   m_Layer: 6
   m_Name: Zombie 1
   m_TagString: Untagged
@@ -643,11 +644,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
+  creepSpeed: 50
   maxHealth: 100
   shadowTransform: {fileID: 7374211127824642058}
   zombieHeadPrefab: {fileID: 4080936159342380450, guid: f3a2498fa700f1348bb6b1a8b90d49a6, type: 3}
   zombieLeftLeg: {fileID: 2343175063171992868, guid: 1f2b560174db421469e1121af0d303c0, type: 3}
-  zombieRightLef: {fileID: 7841168186449088194, guid: 4e448af1ae0deaf48a7a2da4fe64b7fe, type: 3}
+  zombieRightLeg: {fileID: 7841168186449088194, guid: 4e448af1ae0deaf48a7a2da4fe64b7fe, type: 3}
   bloodEffectPrefab: {fileID: 1408841087760154652, guid: b8ee9683482976247a95287e80cd0131, type: 3}
   renderers:
   - {fileID: 5927193450527529215}
@@ -656,7 +658,7 @@ MonoBehaviour:
   - {fileID: 7802775807851116067}
   - {fileID: 2514141720661290221}
   - {fileID: 7173273160394130073}
-  attackTime: 1
+  attackTime: 2
   damage: 3
 --- !u!50 &2425417889326251958
 Rigidbody2D:
@@ -666,9 +668,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2435625702026968888}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -681,10 +683,55 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!61 &1288789211073807224
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435625702026968888}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.056983232, y: 0.4125181}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9498763, y: 1.4027891}
+  m_EdgeRadius: 0
 --- !u!1 &3233960736389777303
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1241,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.86, y: 0}

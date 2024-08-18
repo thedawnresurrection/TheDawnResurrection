@@ -13,6 +13,7 @@ public class BodyPart : MonoBehaviour, IDamageable
     private BaseZombie baseZombie;
     private Collider2D collider;
     public List<Collider2D> disableColliders;
+    private bool rupture;
 
     private void Awake()
     {
@@ -26,7 +27,11 @@ public class BodyPart : MonoBehaviour, IDamageable
         {
             case BodyType.Head:
                 newDamage = damage * 4;
-                HeadRupture();
+
+                if (!rupture)
+                    HeadRupture();
+                else newDamage = 0;
+
                 break;
             case BodyType.Body:
                 newDamage = damage;
@@ -36,7 +41,14 @@ public class BodyPart : MonoBehaviour, IDamageable
                 break;
             case BodyType.Leg:
                 newDamage = damage / 2;
-                LegRupture();
+
+                if (!rupture)
+                {
+                    LegRupture();
+                }
+                else newDamage = 0;
+
+
                 break;
         }
 
@@ -58,7 +70,7 @@ public class BodyPart : MonoBehaviour, IDamageable
 
     private void HeadRupture()
     {
-
+        if (Random.value > 0.5f) return;
         CloseCollider();
         renderer.enabled = false;
         var zombieHead = Instantiate(baseZombie.zombieHeadPrefab, transform.position, Quaternion.identity);
@@ -78,7 +90,7 @@ public class BodyPart : MonoBehaviour, IDamageable
 
         renderer.enabled = false;
         var prefab = baseZombie.zombieLeftLeg;
-        if (right) prefab = baseZombie.zombieRightLef;
+        if (right) prefab = baseZombie.zombieRightLeg;
 
         var zombieLeg = Instantiate(prefab, transform.position, Quaternion.identity);
         float randomY = Random.Range(4f, 4.5f);
