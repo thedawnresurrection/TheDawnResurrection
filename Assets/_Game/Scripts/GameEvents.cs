@@ -7,6 +7,11 @@ public static class GameEvents
 {
     public static UnityEvent ZombieDieEvent = new UnityEvent();
     public static UnityEvent<BaseZombie, float, int> ZombieBearTrapEvent = new UnityEvent<BaseZombie, float, int>();
+    public static UnityEvent<BaseZombie, float, int> ZombieToxicSlimeEnterEvent = new UnityEvent<BaseZombie, float, int>();
+    public static UnityEvent<BaseZombie> ZombieToxicSlimeExitEvent = new UnityEvent<BaseZombie>();
+    public static UnityEvent ZombieTriggeredBombEvent = new UnityEvent();
+
+
 
     public static UnityEvent<float> AmmoResourceUsedEvent = new UnityEvent<float>();
     public static UnityEvent AmmoResourceNoMoreEvent = new UnityEvent();

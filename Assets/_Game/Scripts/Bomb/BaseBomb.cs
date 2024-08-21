@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseBomb : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BaseBomb : MonoBehaviour
 
     protected RaycastHit2D[] hits;
 
+    public UnityEvent onBombExplodeEvent;
     private void Start()
     {
         Invoke(nameof(Explosion), explosionTime);
@@ -41,6 +43,7 @@ public class BaseBomb : MonoBehaviour
             }
         }
 
+        onBombExplodeEvent?.Invoke();
         Destroy(gameObject);
     }
     private void OnDrawGizmos()

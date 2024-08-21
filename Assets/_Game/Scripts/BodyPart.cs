@@ -110,6 +110,4 @@ public class BodyPart : MonoBehaviour, IDamageable
         }
         collider.enabled = false;
     }
-
-
 }

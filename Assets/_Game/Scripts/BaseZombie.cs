@@ -27,17 +27,22 @@ public class BaseZombie : MonoBehaviour
     public float attackTime = 1f;
     public float damage = 3;
     private bool freeze;
+    private bool toxicSlimeDamage;
 
     private void Start()
     {
         GameEvents.ExpolisionFlashBombEvent.AddListener(ExpolisionFlashBomb);
         GameEvents.ZombieBearTrapEvent.AddListener(ZombieBearTrap);
+        GameEvents.ZombieToxicSlimeEnterEvent.AddListener(ZombieToxicSlimeEnterEvent);
+        GameEvents.ZombieToxicSlimeExitEvent.AddListener(ZombieToxicSlimeExitEvent);
     }
 
     private void OnDestroy()
     {
         GameEvents.ExpolisionFlashBombEvent.RemoveListener(ExpolisionFlashBomb);
         GameEvents.ZombieBearTrapEvent.RemoveListener(ZombieBearTrap);
+        GameEvents.ZombieToxicSlimeEnterEvent.RemoveListener(ZombieToxicSlimeEnterEvent);
+        GameEvents.ZombieToxicSlimeExitEvent.RemoveListener(ZombieToxicSlimeExitEvent);
     }
     private void ExpolisionFlashBomb(float duration, float freezeTime)
     {
@@ -61,6 +66,29 @@ public class BaseZombie : MonoBehaviour
             {
                 freeze = false;
             });
+        }
+    }
+    private void ZombieToxicSlimeEnterEvent(BaseZombie baseZombie, float targetMoveSpeed, int damage)
+    {
+        if (baseZombie == this)
+        {
+            speed = targetMoveSpeed;
+            toxicSlimeDamage = true;
+            StartCoroutine(ZombieToxicSlimeSendDamage(damage, transform.position, 1));
+            IEnumerator ZombieToxicSlimeSendDamage(int damage, Vector3 bloodPos, float damageDuration)
+            {
+                yield return new WaitForSeconds(damageDuration);
+                TakeDamage(damage, bloodPos);
+                if (toxicSlimeDamage) StartCoroutine(ZombieToxicSlimeSendDamage(damage, bloodPos, damageDuration));
+            }
+        }
+    }
+    private void ZombieToxicSlimeExitEvent(BaseZombie baseZombie)
+    {
+        if (baseZombie == this)
+        {
+            toxicSlimeDamage = false;
+            speed = moveSpeed;
         }
     }
     private void Awake()
@@ -97,7 +125,7 @@ public class BaseZombie : MonoBehaviour
     {
         if (!die && !targetBarricade && !freeze)
         {
-            rb.velocity = new Vector2(moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
+            rb.velocity = new Vector2(speed * Time.fixedDeltaTime, rb.velocity.y);
             animator.SetBool("IsMove", rb.velocity.magnitude > 0.2f);
         }
         else
@@ -125,24 +153,36 @@ public class BaseZombie : MonoBehaviour
         health -= damage;
         if (health <= 0 && !die)
         {
-            Debug.Log("test");
-            GameEvents.ZombieDieEvent?.Invoke();
-
-            DisableBodyParts();
-            die = true;
-            animator.SetBool("Die", true);
-            animator.SetTrigger("DieTrigger");
-
-            DOVirtual.DelayedCall(1f, delegate
-            {
-                foreach (var renderer in renderers)
-                {
-                    Tween colorTween = renderer.DOColor(Color.clear, 0.2f);
-                }
-                Destroy(gameObject, 0.3f);
-            });
-
+            ZombieDie();
         }
+    }
+    public void TakeDamage(int damage)
+    {
+        if (die) return;
+        health -= damage;
+        if (health <= 0 && !die)
+        {
+            ZombieDie();
+        }
+    }
+
+    private void ZombieDie()
+    {
+        GameEvents.ZombieDieEvent?.Invoke();
+
+        DisableBodyParts();
+        die = true;
+        animator.SetBool("Die", true);
+        animator.SetTrigger("DieTrigger");
+
+        DOVirtual.DelayedCall(1f, delegate
+        {
+            foreach (var renderer in renderers)
+            {
+                Tween colorTween = renderer.DOColor(Color.clear, 0.2f);
+            }
+            Destroy(gameObject, 0.3f);
+        });
     }
     public void LegRupture()
     {
