@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd2c2a3de806f94eb8fdfff0e116a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 679420412}
+  body: {fileID: 524507265}
   currentWeaponData: {fileID: 11400000, guid: 8b6e26427af5d6741a7f860112b09e99, type: 2}
   baseBullet: {fileID: 4200169087958057943, guid: d5c80710db44736499f47402a45bf1dd, type: 3}
   bulletSpawnTransform: {fileID: 196103358}
@@ -2127,7 +2127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd2c2a3de806f94eb8fdfff0e116a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 679420412}
+  body: {fileID: 813752675}
   currentWeaponData: {fileID: 11400000, guid: 0e92e64fe3767b24a91cdde6b5c6a0df, type: 2}
   baseBullet: {fileID: 4200169087958057943, guid: d5c80710db44736499f47402a45bf1dd, type: 3}
   bulletSpawnTransform: {fileID: 87177914}
