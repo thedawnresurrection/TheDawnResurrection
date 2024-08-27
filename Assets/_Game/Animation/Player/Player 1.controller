@@ -192,7 +192,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7489919964410905290}
-    m_Position: {x: 250, y: -50, z: 0}
+    m_Position: {x: 240, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -906220790311280388}
     m_Position: {x: 240, y: 130, z: 0}
@@ -225,10 +225,10 @@ AnimatorStateMachine:
     m_Position: {x: 745, y: 715, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 526650875941431016}
-    m_Position: {x: 490, y: 130, z: 0}
+    m_Position: {x: 530, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1517524483706806613}
-    m_Position: {x: 500, y: -30, z: 0}
+    m_Position: {x: 540, y: -30, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -281,13 +281,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: HasPistol
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
