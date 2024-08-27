@@ -12,4 +12,6 @@ public class SOWeaponData : ScriptableObject
     public int damage = 20;
     public float resourceAmount;
     public AudioClip fireClip;
+    public float minRotAngle, maxRotAngle;
+    public float minFireAngle, maxFireAngle;
 }

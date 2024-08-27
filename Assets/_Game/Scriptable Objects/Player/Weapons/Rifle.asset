@@ -19,3 +19,7 @@ MonoBehaviour:
   damage: 15
   resourceAmount: 0.3
   fireClip: {fileID: 8300000, guid: 77bc9e7c88041bf489585baf4302afe2, type: 3}
+  minRotAngle: 180
+  maxRotAngle: 220
+  minFireAngle: 130
+  maxFireAngle: 230

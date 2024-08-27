@@ -1,12 +1,9 @@
 using DG.Tweening;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeaponBase : MonoBehaviour
 {
-    public Transform body;
+    public Transform rotateTransform;
     private Camera cam;
 
     public SOWeaponData currentWeaponData;
@@ -29,7 +26,7 @@ public class PlayerWeaponBase : MonoBehaviour
         {
             playerAnimator.SetBool("HasPistol", false);
         }
-        
+
     }
 
     private void Start()
@@ -49,24 +46,25 @@ public class PlayerWeaponBase : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
-        
+
         fireTimer = currentWeaponData.fireRate;
     }
     public void Update()
     {
-        
-        var dir  = Input.mousePosition - cam.WorldToScreenPoint(transform.position);
-        if (dir.x < -50)
-        {
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            var rot = Quaternion.AngleAxis(angle, Vector3.forward);
-            body.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            var bodyEuler = body.eulerAngles;
-            bodyEuler.z = Mathf.Clamp(bodyEuler.z, 100, 250);
-            body.eulerAngles = bodyEuler;
-        }
-      
+        Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+        Vector3 direction = mousePosition - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Açıyı 0-360 arasında normalize et
+        float normalizedAngle = (angle + 360) % 360;
+        // Clamp işlemini tek bir seferde yap
+        float clampedAngle = Mathf.Clamp(normalizedAngle, currentWeaponData.minRotAngle, currentWeaponData.maxRotAngle);
+
+        rotateTransform.rotation = Quaternion.Euler(0, 0, clampedAngle);
+        Debug.Log(normalizedAngle);
+
 
 
         if (fire)
@@ -75,18 +73,24 @@ public class PlayerWeaponBase : MonoBehaviour
             if (Input.GetMouseButton(0) && fireTimer >= currentWeaponData.fireRate)
             {
                 fireTimer = 0;
-                Fire();
+
+                Vector3 bulletdir = (mousePosition - bulletSpawnTransform.position).normalized;
+                if (normalizedAngle > currentWeaponData.minFireAngle && normalizedAngle < currentWeaponData.maxFireAngle)
+                {
+                    Fire(bulletdir);
+                }
+
             }
         }
-        
+
     }
 
-    private void Fire()
+    private void Fire(Vector3 dir)
     {
         GameEvents.AmmoResourceUsedEvent?.Invoke(currentWeaponData.resourceAmount);
 
         var bullet = Instantiate(baseBullet, bulletSpawnTransform.position, Quaternion.identity);
-        bullet.Initialize(body.transform.right,currentWeaponData.bulletSpeed,currentWeaponData.damage);
+        bullet.Initialize(dir, currentWeaponData.bulletSpeed, currentWeaponData.damage);
         muzzleFlash.SetActive(true);
         currentWeaponData.fireClip.PlayClip2D(this, 1, UnityEngine.Random.Range(0.92f, 1.05f));
         DOVirtual.DelayedCall(0.07f, delegate
