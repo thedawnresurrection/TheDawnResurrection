@@ -70,7 +70,7 @@ public class BodyPart : MonoBehaviour, IDamageable
 
     private void HeadRupture()
     {
-        if (Random.value > 0.5f) return;
+        //if (Random.value > 0.5f) return;
         CloseCollider();
         renderer.enabled = false;
         var zombieHead = Instantiate(baseZombie.zombieHeadPrefab, transform.position, Quaternion.identity);

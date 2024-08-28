@@ -64,6 +64,8 @@ public class PlayerWeaponBase : MonoBehaviour
         Vector3 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         Vector3 direction = mousePosition - transform.position;
+
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         // Açıyı 0-360 arasında normalize et
@@ -71,7 +73,12 @@ public class PlayerWeaponBase : MonoBehaviour
         // Clamp işlemini tek bir seferde yap
         float clampedAngle = Mathf.Clamp(normalizedAngle, currentWeaponData.minRotAngle, currentWeaponData.maxRotAngle);
 
-        rotateTransform.rotation = Quaternion.Euler(0, 0, clampedAngle);
+        Debug.Log(direction.x);
+        if (direction.x < -4)
+        {
+            rotateTransform.rotation = Quaternion.Euler(0, 0, clampedAngle);
+        }
+
 
 
 
@@ -108,7 +115,7 @@ public class PlayerWeaponBase : MonoBehaviour
     }
     private void Reload()
     {
-        GameEvents.PlayerMagazineReloadEvent?.Invoke();
+        GameEvents.PlayerMagazineReloadStartEvent?.Invoke();
         isReloading = true;
         Tween reloadTween = DOVirtual.Float(1, 0, 0.2f, delegate (float newValue)
         {
@@ -125,6 +132,7 @@ public class PlayerWeaponBase : MonoBehaviour
                 });
                 resetTween.OnComplete(delegate
                 {
+                    GameEvents.PlayerMagazineReloadEndEvent?.Invoke();
                     isReloading = false;
                     magazineBulletAmount = currentWeaponData.magazineBulletAmount;
                 });

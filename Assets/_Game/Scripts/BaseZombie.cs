@@ -193,14 +193,8 @@ public class BaseZombie : MonoBehaviour
     {
         if (collision.TryGetComponent(out Barricade barricade))
         {
-            targetBarricade = barricade;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out Barricade barricade))
-        {
-            targetBarricade = null;
+            if (targetBarricade == null)
+                targetBarricade = barricade;
         }
     }
 }

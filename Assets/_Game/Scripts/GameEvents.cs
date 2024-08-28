@@ -24,7 +24,10 @@ public static class GameEvents
     public static UnityEvent<float, float> ExpolisionFlashBombEvent = new UnityEvent<float, float>();
 
 
-    public static UnityEvent PlayerMagazineReloadEvent = new UnityEvent();
+    public static UnityEvent PlayerMagazineReloadStartEvent = new UnityEvent();
+    public static UnityEvent PlayerMagazineReloadEndEvent = new UnityEvent();
+    public static UnityEvent PlayerWeaponChangeStartEvent = new UnityEvent();
+    public static UnityEvent PlayerWeaponChangeEndEvent = new UnityEvent();
 
 
 }

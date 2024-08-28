@@ -188,9 +188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyType: 3
   left: 0
-  right: 0
+  right: 1
   renderer: {fileID: 2514141720661290221}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 2458261600945357767}
 --- !u!1 &831104838890032215
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +276,8 @@ MonoBehaviour:
   left: 0
   right: 0
   renderer: {fileID: 5927193450527529215}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 5550505708528830595}
 --- !u!1 &1479584016703213038
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e25265ca2d73534faf1efb1bfaff0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 150
   creepSpeed: 50
   maxHealth: 100
   shadowTransform: {fileID: 7374211127824642058}
@@ -814,10 +816,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 3
-  left: 0
+  left: 1
   right: 0
   renderer: {fileID: 7173273160394130073}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 5921336610395481070}
 --- !u!1 &4344696854078357173
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +905,8 @@ MonoBehaviour:
   left: 0
   right: 0
   renderer: {fileID: 2514141720661290221}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 2825208279833778506}
 --- !u!1 &5304940729946184473
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +991,8 @@ MonoBehaviour:
   left: 0
   right: 0
   renderer: {fileID: 7173273160394130073}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 5362031137645706745}
 --- !u!1 &5520885107594628159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,10 +1180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyType: 2
-  left: 0
+  left: 1
   right: 0
   renderer: {fileID: 7802775807851116067}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 5527180464453239353}
 --- !u!1 &6805764433883452086
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,9 +1363,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyType: 2
   left: 0
-  right: 0
+  right: 1
   renderer: {fileID: 5927193450527529215}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 8609411371032475803}
 --- !u!1 &7738653352240786773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,10 +1510,10 @@ Transform:
   - {fileID: 6081547471413306566}
   - {fileID: 7734772043214267121}
   - {fileID: 5469489757484424390}
-  - {fileID: 4820176220006622608}
-  - {fileID: 6354760293259953682}
-  - {fileID: 7030585680829048368}
   - {fileID: 7608682024462285705}
+  - {fileID: 4820176220006622608}
+  - {fileID: 7030585680829048368}
+  - {fileID: 6354760293259953682}
   m_Father: {fileID: 4068187255434939617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8805357287384951984
@@ -1696,7 +1703,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9108339967315322703
@@ -1783,4 +1790,5 @@ MonoBehaviour:
   left: 0
   right: 0
   renderer: {fileID: 7802775807851116067}
-  disableColliders: []
+  disableColliders:
+  - {fileID: 394842008460933765}

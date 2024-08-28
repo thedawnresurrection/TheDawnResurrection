@@ -82,6 +82,9 @@ public class PlayerWeaponHolder : MonoBehaviour
         }
         if (weaponSwitchCoroutine != null) return; // suan silah degistriyorsak
 
+
+        GameEvents.PlayerWeaponChangeStartEvent?.Invoke();
+
         foreach (PlayerWeaponBase weapon in weapons)
         {
             weapon.gameObject.SetActive(false);
@@ -104,6 +107,7 @@ public class PlayerWeaponHolder : MonoBehaviour
                 weaponBase.limbLeftArm.weight = value;
                 weaponBase.limbRightArm.weight = value;
             });
+            GameEvents.PlayerWeaponChangeEndEvent?.Invoke();
             weapons[index].gameObject.SetActive(true);
             weaponSwitchCoroutine = null;
         }

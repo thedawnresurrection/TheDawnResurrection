@@ -33,4 +33,13 @@ public class ResourceManager : MonoBehaviour
         GameEvents.AmmoResourceAmountUpdateEvent?.Invoke(maxAmmoResource, ammoResource);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            ammoResource = maxAmmoResource;
+            GameEvents.AmmoResourceAmountUpdateEvent?.Invoke(maxAmmoResource, maxAmmoResource);
+        }
+    }
+
 }

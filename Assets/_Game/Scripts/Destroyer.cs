@@ -7,19 +7,19 @@ public class Destroyer : MonoBehaviour
 {
     public float destroyTime;
     private bool isPlaying;
-    private void OnEnable()
-    {
-
-    }
+    public SpriteRenderer sp;
     void Start()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer && !isPlaying)
+        if (sp == null)
+        {
+            sp = GetComponent<SpriteRenderer>();
+        }
+        if (sp && !isPlaying)
         {
             isPlaying = true;
             DOVirtual.DelayedCall(destroyTime, delegate
             {
-                spriteRenderer.DOColor(Color.clear, destroyTime / 2).OnComplete(delegate
+                sp.DOColor(Color.clear, destroyTime / 2).OnComplete(delegate
                 {
                     Destroy(gameObject);
                 });

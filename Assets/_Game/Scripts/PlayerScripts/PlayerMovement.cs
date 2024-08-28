@@ -8,11 +8,26 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    private bool canMove = true;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void Start()
+    {
+        GameEvents.PlayerMagazineReloadStartEvent.AddListener(MagazineReloadStart);
+        GameEvents.PlayerMagazineReloadEndEvent.AddListener(MagazineReloadEnd);
+        GameEvents.PlayerWeaponChangeStartEvent.AddListener(WeaponChangeStart);
+        GameEvents.PlayerWeaponChangeEndEvent.AddListener(WeaponChangeEnd);
+    }
+    private void OnDestroy()
+    {
+        GameEvents.PlayerMagazineReloadStartEvent.RemoveListener(MagazineReloadStart);
+        GameEvents.PlayerMagazineReloadEndEvent.RemoveListener(MagazineReloadEnd);
+        GameEvents.PlayerWeaponChangeStartEvent.RemoveListener(WeaponChangeStart);
+        GameEvents.PlayerWeaponChangeEndEvent.RemoveListener(WeaponChangeEnd);
     }
 
     private void Update()
@@ -33,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (movementData)
         {
+            if (!canMove)
+            {
+                rb.velocity = Vector2.zero;
+                return;
+            }
             float inputY = Input.GetAxisRaw(movementData.inputAxisName);
             animator.SetBool("IsMove", inputY != 0);
             rb.velocity = new Vector3(0, movementData.movementSpeed * Time.fixedDeltaTime *
@@ -42,5 +62,21 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Movement Data Empty");
         }
+    }
+    private void MagazineReloadStart()
+    {
+        canMove = false;
+    }
+    private void MagazineReloadEnd()
+    {
+        canMove = true;
+    }
+    private void WeaponChangeStart()
+    {
+        canMove = false;
+    }
+    private void WeaponChangeEnd()
+    {
+        canMove = true;
     }
 }
