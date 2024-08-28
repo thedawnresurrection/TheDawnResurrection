@@ -99,7 +99,7 @@ public class PlayerWeaponHolder : MonoBehaviour
         IEnumerator SwitchWeapon()
         {
             yield return new WaitForSeconds(0.5f);
-            DOVirtual.Float(0, 1, 0.2f, delegate (float value)
+            DOVirtual.Float(0, 1, 0.1f, delegate (float value)
             {
                 weaponBase.limbLeftArm.weight = value;
                 weaponBase.limbRightArm.weight = value;
