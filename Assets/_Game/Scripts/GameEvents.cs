@@ -24,4 +24,7 @@ public static class GameEvents
     public static UnityEvent<float, float> ExpolisionFlashBombEvent = new UnityEvent<float, float>();
 
 
+    public static UnityEvent PlayerMagazineReloadEvent = new UnityEvent();
+
+
 }

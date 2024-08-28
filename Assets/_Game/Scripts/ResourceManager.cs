@@ -6,6 +6,7 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     private float ammoResource;
+    public float AmmoResource => ammoResource;
     public float maxAmmoResource = 100;
     private void Awake()
     {
@@ -31,4 +32,5 @@ public class ResourceManager : MonoBehaviour
         }
         GameEvents.AmmoResourceAmountUpdateEvent?.Invoke(maxAmmoResource, ammoResource);
     }
+
 }

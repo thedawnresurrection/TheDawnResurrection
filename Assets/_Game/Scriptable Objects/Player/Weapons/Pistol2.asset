@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d92d68c1585e2e740ac4221fd76ea1f1, type: 3}
-  m_Name: Pistol
+  m_Name: Pistol2
   m_EditorClassIdentifier: 
-  weaponName: Pistol
+  weaponName: Pistol2
   weaponType: 0
   bulletSpeed: 70
   fireRate: 0.5
   damage: 10
+  magazineBulletAmount: 8
   resourceAmount: 1
   fireClip: {fileID: 8300000, guid: 77bc9e7c88041bf489585baf4302afe2, type: 3}
-  minRotAngle: 180
-  maxRotAngle: 220
+  minRotAngle: 160
+  maxRotAngle: 200
   minFireAngle: 130
   maxFireAngle: 230
